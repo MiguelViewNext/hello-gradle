@@ -1,0 +1,8 @@
+version: "3.0"
+
+services:
+  gradle:
+    image: gradle:miversion
+    build: .
+    ports:
+      - "80:80"
