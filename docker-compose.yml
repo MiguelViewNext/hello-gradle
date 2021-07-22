@@ -5,4 +5,4 @@ services:
     image: gradle:miversion
     build: .
     ports:
-      - "80:80"
+      - "80:8080"
