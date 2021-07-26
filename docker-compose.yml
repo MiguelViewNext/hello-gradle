@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   gradle:
-    image: gradle:miversion
+    image: gradle:openjdk-jre-slim
     build: .
     ports:
       - "80:8080"
