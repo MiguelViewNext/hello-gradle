@@ -5,6 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+		sh "docker-compose build"
+		sh "docker-compose docker image tag hello-gradle:latest hello-gradle:MAIN-1.0.${BUILD_NUMBER}"
             }
         }
         stage('Test') {
@@ -15,6 +17,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+		sh "docker-compose up -d"
             }
         }
     }
