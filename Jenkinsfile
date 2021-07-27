@@ -4,11 +4,10 @@ pipeline {
         ansiColor('xterm')
     }
     stages {
-        stage('Build') {
+        stage('Build .jar') {
             steps {
                 echo '\033[34mHello\033[0m \033[33mcolorful\033[0m \033[35mworld!\033[0m'
-		sh "docker-compose build"
-		sh "docker image tag hello-gradle:latest hello-gradle:MAIN-1.0.${BUILD_NUMBER}"
+		sh "./gradlew assemble"
             }
         }
         stage('Test') {
@@ -19,7 +18,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-		sh "docker-compose up -d"
+		archiveArtifacts artifacts: 'build/libs/*.jar'
             }
         }
     }
