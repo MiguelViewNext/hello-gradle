@@ -12,6 +12,7 @@ pipeline {
             post {
 		success {
 			archiveArtifacts artifacts: 'build/libs/*.jar'
+			updateGitlabCommitStatus name: 'build', state: 'success'
 		}
 	    }
         }
