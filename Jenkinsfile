@@ -4,7 +4,7 @@ pipeline {
         ansiColor('xterm')
     }
     stages {
-        stage('Build .jar') {
+        stage('Build file .jar') {
             steps {
 		sh "./gradlew assemble"
 
