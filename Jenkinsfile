@@ -27,7 +27,7 @@ pipeline {
                 echo 'Deploying....'
                 sshagent (credentials: ['jenkins_ID']) {
                     sh 'git tag MAIN-1.0.${BUILD_NUMBER}'
-                    sh 'git push MAIN-1.0.${BUILD_NUMBER}'
+                    sh 'git push MAIN-1.0.${BUILD_NUMBER} HEAD:new_branch'
                 }
             }
         }
