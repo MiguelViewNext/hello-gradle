@@ -12,7 +12,6 @@ pipeline {
             post {
 		success {
 			archiveArtifacts artifacts: 'build/libs/*.jar'
-			updateGitlabCommitStatus name: 'build', state: 'success'
 		}
 	    }
         }
@@ -28,6 +27,13 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+	stage('gitlab') {
+          steps {
+             echo 'Notify GitLab'
+             updateGitlabCommitStatus name: 'build', state: 'pending'
+             updateGitlabCommitStatus name: 'build', state: 'success'
+          }
+       }
     }
 }
 
